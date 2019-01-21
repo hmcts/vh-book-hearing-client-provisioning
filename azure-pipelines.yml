@@ -35,13 +35,13 @@ jobs:
   - checkout: self  # self represents the repo where the initial Pipelines YAML file was found
     clean: false  # whether to fetch clean each time
 
-  - pwsh: | 
+  - powershell: | 
       #Get-ChildItem -Recurse
       Install-Module AzureAD
       Install-Module AzureRM.KeyVault
       Copy-Item -Path $(System.DefaultWorkingDirectory)/*vh-ps-modules/AzureADApplicationRegistration -Destination "C:\Program Files\WindowsPowerShell\Modules" -Recurse -Force
 
-  - pwsh: | 
+  - powershell: | 
      Invoke-AzureADApplicationRegistration `
      -AzureTenantId "$(AzureTenantID)" ` 
      -AzureAdAppId "$(AzureVSTSAutomation)" `
