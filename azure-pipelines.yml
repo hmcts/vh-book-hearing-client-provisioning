@@ -55,7 +55,5 @@ jobs:
     displayName: Say hello
     name: firstStep
 
-# Performs npm steps - install, build, test, test publishing
-  - template: ../templates/npm/npm.yml
 
 
