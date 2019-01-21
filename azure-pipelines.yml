@@ -3,17 +3,59 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+# Set variables once
+variables:
+  - group: 'vh-vsts-automation'  # another variable group
+  - group: 'Azure AD Tenant - hearings.reform.hmcts.net'
+  - name: service # name of a variable
+    value: vh-app-api # value of the variable
+  - name: environment # name of a variable
+    value: jb # value of the variable
+
+
+resources:
+  repositories:
+  - repository: psModules
+    type: github
+    name: hmcts/vh-ps-modules
+    endpoint: 'GitHub connection 1'
+
 trigger:
 - master
+pr:
+- master
 
-pool:
-  vmImage: 'Ubuntu-16.04'
+jobs:
+- job: 
+  displayName: 'Build & Test Java Script and .Net Core'
+  pool: Azure-VSTS-VS2017
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  # Reference templae for setting up build tools
+  steps:
+  - checkout: self  # self represents the repo where the initial Pipelines YAML file was found
+    clean: false  # whether to fetch clean each time
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - pwsh: | 
+      #Get-ChildItem -Recurse
+      Install-Module AzureAD
+      Install-Module AzureRM.KeyVault
+      Copy-Item -Path $(System.DefaultWorkingDirectory)/*vh-ps-modules/AzureADApplicationRegistration -Destination "C:\Program Files\WindowsPowerShell\Modules" -Recurse -Force
+
+  - pwsh: | 
+     Invoke-AzureADApplicationRegistration `
+     -AzureTenantId "$(AzureTenantID)" ` 
+     -AzureAdAppId "$(AzureVSTSAutomation)" `
+     -AzureAdAppCertificateThumbprint "$(AzureVSTSAutomationCertThumbprint)" `
+     -AzureSubscriptionId "$(AzureSubscriptionID)" `
+     -AzureADApplicationName "$(AzureADApplicationName )_$(Release.EnvironmentName)" `
+     -AzureKeyVaultName "$(AzureKeyVaultName)" `
+     -AzureTenantIdSecondary "$(AzureTenantIdSecondary)" `
+     -AzureAdAppIdSecondary "$(AzureAdAppIdSecondary)" `
+     -AzureAdAppCertificateThumbprintSecondary "$(AzureAdAppCertificateThumbprintSecondary)"
+    displayName: Say hello
+    name: firstStep
+
+# Performs npm steps - install, build, test, test publishing
+  - template: ../templates/npm/npm.yml
+
+
