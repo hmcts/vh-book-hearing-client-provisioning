@@ -13,12 +13,7 @@ variables:
     value: jb # value of the variable
 
 
-resources:
-  repositories:
-  - repository: psModules
-    type: github
-    name: hmcts/vh-ps-modules
-    endpoint: 'GitHub connection 1'
+
 
 trigger:
 - master
