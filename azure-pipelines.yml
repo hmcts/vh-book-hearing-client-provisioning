@@ -11,6 +11,8 @@ variables:
     value: vh-app-api # value of the variable
   - name: environment # name of a variable
     value: jb # value of the variable
+  - name: environmentName # name of a variable
+    value: '' # value of the variable
 
 
 
