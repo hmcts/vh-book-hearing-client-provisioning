@@ -56,9 +56,9 @@ jobs:
      -AzureSubscriptionId '$(vh_azure_subscription_id_dev)' `
      -AzureADApplicationName '$(service)_$(environment)' `
      -AzureKeyVaultName '$(keyVaultName)' `
-     -AzureTenantIdSecondary '$(AzureTenantIdSecondary)' `
-     -AzureAdAppIdSecondary '$(AzureAdAppIdSecondary)' `
-     -AzureAdAppCertificateThumbprintSecondary '$(AzureAdAppCertificateThumbprintSecondary)'
+     -AzureTenantIdSecondary '$(vh_hearings_tenata_id)' `
+     -AzureAdAppIdSecondary '$(vh_hearings_vsts_automation_AppId)' `
+     -AzureAdAppCertificateThumbprintSecondary '$(vh_hearings_vsts_automation_CertThumbprit)'
     displayName: Say hello
     name: firstStep
     env:
