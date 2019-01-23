@@ -53,7 +53,8 @@ jobs:
      -AzureAdAppCertificateThumbprintSecondary '$(AzureAdAppCertificateThumbprintSecondary)'
     displayName: Say hello
     name: firstStep
-
+    env:
+      AzureTenantID: $(vh_teantid)
 
 
 
