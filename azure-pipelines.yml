@@ -43,7 +43,7 @@ jobs:
   - powershell: | 
      write-host $(AzureTenantID)
     displayName: Say hello
-    name: firstStep
+    name: testPS
     env:
       AzureTenantID: $(vh_teantid)
       AzureVSTSAutomation: 
