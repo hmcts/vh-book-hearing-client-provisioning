@@ -10,9 +10,9 @@ variables:
   - name: service # name of a variable
     value: vh-app-api # value of the variable
   - name: environment # name of a variable
-    value: jb # value of the variable
-  - name: environmentName # name of a variable
-    value: '' # value of the variable
+    value: test # value of the variable
+  - name: keyVaultName # name of a variable
+    value: 'vh-jb-test' # value of the variable
 
 
 
@@ -51,11 +51,11 @@ jobs:
   - powershell: | 
      Invoke-AzureADApplicationRegistration `
      -AzureTenantId '$(vh_teantid)' ` 
-     -AzureAdAppId '$(AzureVSTSAutomation)' `
-     -AzureAdAppCertificateThumbprint '$(AzureVSTSAutomationCertThumbprint)' `
-     -AzureSubscriptionId '$(AzureSubscriptionID)' `
-     -AzureADApplicationName '$(AzureADApplicationName )_$(Release.EnvironmentName)' `
-     -AzureKeyVaultName '$(AzureKeyVaultName)' `
+     -AzureAdAppId '$(vh_vsts_automation_dev_AppId)' `
+     -AzureAdAppCertificateThumbprint '$(vh_vsts_automation_dev_CertThumbprit)' `
+     -AzureSubscriptionId '$(vh_azure_subscription_id_dev)' `
+     -AzureADApplicationName '$(service)_$(environment)' `
+     -AzureKeyVaultName '$(keyVaultName)' `
      -AzureTenantIdSecondary '$(AzureTenantIdSecondary)' `
      -AzureAdAppIdSecondary '$(AzureAdAppIdSecondary)' `
      -AzureAdAppCertificateThumbprintSecondary '$(AzureAdAppCertificateThumbprintSecondary)'
