@@ -42,7 +42,7 @@ jobs:
 
   - powershell: | 
      Invoke-AzureADApplicationRegistration `
-     -AzureTenantId "$(AzureTenantID)" ` 
+     -AzureTenantId '$(AzureTenantID)'' ` 
      -AzureAdAppId "$(AzureVSTSAutomation)" `
      -AzureAdAppCertificateThumbprint "$(AzureVSTSAutomationCertThumbprint)" `
      -AzureSubscriptionId "$(AzureSubscriptionID)" `
