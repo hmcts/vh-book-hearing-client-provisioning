@@ -44,9 +44,6 @@ jobs:
      write-host ('{0}' -f '$(vh_teantid)')
     displayName: Say hello
     name: testPS
-    env:
-      AzureTenantID: $(vh_teantid)
-      AzureVSTSAutomation: 
 
   - powershell: | 
      Invoke-AzureADApplicationRegistration `
