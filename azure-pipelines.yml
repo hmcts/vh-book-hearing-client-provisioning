@@ -41,7 +41,7 @@ jobs:
       Copy-Item -Path $(System.DefaultWorkingDirectory)/*vh-ps-modules/AzureADApplicationRegistration -Destination "C:\Program Files\WindowsPowerShell\Modules" -Recurse -Force
 
   - powershell: | 
-     write-host $(AzureTenantID)
+     write-host '$(AzureTenantID)''
     displayName: Say hello
     name: testPS
     env:
