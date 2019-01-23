@@ -43,14 +43,14 @@ jobs:
   - powershell: | 
      Invoke-AzureADApplicationRegistration `
      -AzureTenantId '$(AzureTenantID)'' ` 
-     -AzureAdAppId "$(AzureVSTSAutomation)" `
-     -AzureAdAppCertificateThumbprint "$(AzureVSTSAutomationCertThumbprint)" `
-     -AzureSubscriptionId "$(AzureSubscriptionID)" `
-     -AzureADApplicationName "$(AzureADApplicationName )_$(Release.EnvironmentName)" `
-     -AzureKeyVaultName "$(AzureKeyVaultName)" `
-     -AzureTenantIdSecondary "$(AzureTenantIdSecondary)" `
-     -AzureAdAppIdSecondary "$(AzureAdAppIdSecondary)" `
-     -AzureAdAppCertificateThumbprintSecondary "$(AzureAdAppCertificateThumbprintSecondary)"
+     -AzureAdAppId '$(AzureVSTSAutomation)' `
+     -AzureAdAppCertificateThumbprint '$(AzureVSTSAutomationCertThumbprint)' `
+     -AzureSubscriptionId '$(AzureSubscriptionID)' `
+     -AzureADApplicationName '$(AzureADApplicationName )_$(Release.EnvironmentName)' `
+     -AzureKeyVaultName '$(AzureKeyVaultName)' `
+     -AzureTenantIdSecondary '$(AzureTenantIdSecondary)' `
+     -AzureAdAppIdSecondary '$(AzureAdAppIdSecondary)' `
+     -AzureAdAppCertificateThumbprintSecondary '$(AzureAdAppCertificateThumbprintSecondary)'
     displayName: Say hello
     name: firstStep
     env:
