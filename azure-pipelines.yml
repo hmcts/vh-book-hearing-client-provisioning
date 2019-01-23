@@ -56,7 +56,7 @@ jobs:
 
   - powershell: | 
      Invoke-AzureADApplicationRegistration `
-     -AzureTenantId '$(vh_teantid)' ` 
+     -AzureTenantId '$(vh_teantid)' `
      -AzureAdAppId '$(vh_vsts_automation_dev_AppId)' `
      -AzureAdAppCertificateThumbprint '$(vh_vsts_automation_dev_CertThumbprit)' `
      -AzureSubscriptionId '$(vh_azure_subscription_id_dev)' `
