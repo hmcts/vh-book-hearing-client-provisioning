@@ -41,6 +41,14 @@ jobs:
       Copy-Item -Path $(System.DefaultWorkingDirectory)/*vh-ps-modules/AzureADApplicationRegistration -Destination "C:\Program Files\WindowsPowerShell\Modules" -Recurse -Force
 
   - powershell: | 
+     write-host $(AzureTenantID)
+    displayName: Say hello
+    name: firstStep
+    env:
+      AzureTenantID: $(vh_teantid)
+      AzureVSTSAutomation: 
+
+  - powershell: | 
      Invoke-AzureADApplicationRegistration `
      -AzureTenantId '$(AzureTenantID)'' ` 
      -AzureAdAppId '$(AzureVSTSAutomation)' `
@@ -55,6 +63,7 @@ jobs:
     name: firstStep
     env:
       AzureTenantID: $(vh_teantid)
+      AzureVSTSAutomation: 
 
 
 
