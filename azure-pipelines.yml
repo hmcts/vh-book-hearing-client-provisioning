@@ -62,7 +62,8 @@ jobs:
      -AzureKeyVaultName '$(keyVaultName)' `
      -AzureTenantIdSecondary '$(vh_hearings_tenata_id)' `
      -AzureAdAppIdSecondary '$(vh_hearings_vsts_automation_AppId)' `
-     -AzureAdAppCertificateThumbprintSecondary '$(vh_hearings_vsts_automation_CertThumbprit)'
+     -AzureAdAppCertificateThumbprintSecondary '$(vh_hearings_vsts_automation_CertThumbprit)' `
+     -verbose
     displayName: 'Register AAD App'
 
 
