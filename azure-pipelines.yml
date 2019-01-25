@@ -9,8 +9,6 @@ variables:
   - group: 'Azure AD Tenant - hearings.reform.hmcts.net'
   - name: service # name of a variable
     value: vh-app-api # value of the variable
-  - name: environment # name of a variable
-    value: test # value of the variable
   - name: keyVaultName # name of a variable
     value: 'vh-jb-test' # value of the variable
 
@@ -46,7 +44,7 @@ jobs:
      write-host ('{0}' -f '$(vh_vsts_automation_dev_AppId)')
      write-host ('{0}' -f '$(vh_vsts_automation_dev_CertThumbprit)')
      write-host ('{0}' -f '$(vh_azure_subscription_id_dev)')
-     write-host ('{0}' -f '$(service)_$(environment)')
+     write-host ('{0}' -f '$(service)_$(environmentName)')
      write-host ('{0}' -f '$(keyVaultName)')
      write-host ('{0}' -f '$(vh_hearings_tenata_id)')
      write-host ('{0}' -f '$(vh_hearings_vsts_automation_AppId)')
