@@ -58,7 +58,7 @@ jobs:
      -AzureAdAppId '$(vh_vsts_automation_dev_AppId)' `
      -AzureAdAppCertificateThumbprint '$(vh_vsts_automation_dev_CertThumbprit)' `
      -AzureSubscriptionId '$(vh_azure_subscription_id_dev)' `
-     -AzureADApplicationName '$(service)-$(environment)' `
+     -AzureADApplicationName '$(service)-$(environmentName)' `
      -AzureKeyVaultName '$(keyVaultName)' `
      -AzureTenantIdSecondary '$(vh_hearings_tenata_id)' `
      -AzureAdAppIdSecondary '$(vh_hearings_vsts_automation_AppId)' `
