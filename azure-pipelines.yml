@@ -41,8 +41,6 @@ jobs:
 
   - powershell: |
      git clone https://github.com/hmcts/vh-ps-modules.git
-     cd .\vh-ps-modules\
-     git checkout lower-case-key-name-vih-3495
   
     displayName: 'Get PowerShel module source'
 
