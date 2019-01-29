@@ -8,7 +8,7 @@ variables:
   - group: 'vh-vsts-automation'  # another variable group
   - group: 'Azure AD Tenant - hearings.reform.hmcts.net'
   - name: service # name of a variable
-    value: vh-app-api # value of the variable
+    value: vh-app-api-jb # value of the variable
   - name: keyVaultName # name of a variable
     value: 'vh-jb-test' # value of the variable
 
@@ -65,6 +65,20 @@ jobs:
      -AzureAdAppCertificateThumbprintSecondary '$(vh_hearings_vsts_automation_CertThumbprit)' `
      -verbose
     displayName: 'Register AAD App'
+
+  - powershell: | 
+      Invoke-AzureADApplicationRegistration `
+      -AzureTenantId '$(vh_teantid)' `
+      -AzureAdAppId '$(vh_vsts_automation_dev_AppId)' `
+      -AzureAdAppCertificateThumbprint '$(vh_vsts_automation_dev_CertThumbprit)' `
+      -AzureSubscriptionId '$(vh_azure_subscription_id_dev)' `
+      -AzureADApplicationName '$(service)-$(environmentName)' `
+      -AzureKeyVaultName '$(keyVaultName)' `
+      -AzureTenantIdSecondary '$(vh_hearings_tenata_id)' `
+      -AzureAdAppIdSecondary '$(vh_hearings_vsts_automation_AppId)' `
+      -AzureAdAppCertificateThumbprintSecondary '$(vh_hearings_vsts_automation_CertThumbprit)' `
+      -verbose
+    displayName: 'Set AAD App Replay URLs'
 
 
 
