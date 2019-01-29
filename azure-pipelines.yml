@@ -108,7 +108,7 @@ jobs:
       csmParametersFile: 'infrastructure/azuredeploy.parameters.json'
       overrideParameters: -appServicePlanName $(AppServicePlanName) -AzureWebsite $(WebSiteName) -customHostname $(CustomHostname) -certificateThumbprint $(WildcardCertificateThumbprint)
 
-      deploymentMode: Validation
+      deploymentMode: Incrementl
 
 
 
