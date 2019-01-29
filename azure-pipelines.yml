@@ -8,6 +8,7 @@ variables:
   - group: 'vh-vsts-automation'  # another variable group
   - group: 'Azure AD Tenant - hearings.reform.hmcts.net'
   - group: 'vh-hearings-ssl-certificates'
+  - group: 'vh-hearings-reform-hmcts-net-dns-zone'
   - name: service # name of a variable
     value: vh-app-api-jb-2 # value of the variable
   - name: keyVaultName # name of a variable
@@ -22,6 +23,8 @@ variables:
     value: $(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)
   - name: certificateThumbprint
     value: vh-jb
+  - name: AADAppReplyUrls
+    value: https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/login
 
 
 trigger:
@@ -81,17 +84,12 @@ jobs:
     displayName: 'Register AAD App'
 
   - powershell: | 
-      Invoke-AzureADApplicationRegistration `
-      -AzureTenantId '$(vh_teantid)' `
-      -AzureAdAppId '$(vh_vsts_automation_dev_AppId)' `
-      -AzureAdAppCertificateThumbprint '$(vh_vsts_automation_dev_CertThumbprit)' `
-      -AzureSubscriptionId '$(vh_azure_subscription_id_dev)' `
-      -AzureADApplicationName '$(service)-$(environmentName)' `
-      -AzureKeyVaultName '$(keyVaultName)' `
-      -AzureTenantIdSecondary '$(vh_hearings_tenata_id)' `
-      -AzureAdAppIdSecondary '$(vh_hearings_vsts_automation_AppId)' `
-      -AzureAdAppCertificateThumbprintSecondary '$(vh_hearings_vsts_automation_CertThumbprit)' `
-      -verbose
+     Set-AzureADApplicationReplyUrls `
+     -AzureTenantId "$(vh_teantid)" `
+     -AzureAdAppId "$(vh_vsts_automation_dev_AppId)" `
+     -AzureAdAppCertificateThumbprint "$(vh_vsts_automation_dev_CertThumbprit)" `
+     -AADAppName "$(service)-$(environmentName)" `
+     -AADAppReplyUrls "$(AADAppReplyUrls)"
     displayName: 'Set AAD App Replay URLs'
 
 
