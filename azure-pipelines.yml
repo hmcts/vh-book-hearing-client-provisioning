@@ -7,10 +7,22 @@
 variables:
   - group: 'vh-vsts-automation'  # another variable group
   - group: 'Azure AD Tenant - hearings.reform.hmcts.net'
+  - group: 'vh-hearings-ssl-certificates'
   - name: service # name of a variable
     value: vh-app-api-jb-2 # value of the variable
   - name: keyVaultName # name of a variable
     value: 'vh-jb-test' # value of the variable
+  - name: resourceGroupName
+    value: vh-jb
+  - name: AppServicePlanName
+    value: vh-jb
+  - name: WebSiteName
+    value: $(service)-$(environmentName)
+  - name: CustomHostname
+    value: $(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)
+  - name: certificateThumbprint
+    value: vh-jb
+
 
 trigger:
 - master
@@ -83,6 +95,22 @@ jobs:
       -AzureAdAppCertificateThumbprintSecondary '$(vh_hearings_vsts_automation_CertThumbprit)' `
       -verbose
     displayName: 'Set AAD App Replay URLs'
+
+
+  - task: AzureResourceGroupDeployment@2
+    displayName: 'Validate ARM template'
+    inputs:
+      azureSubscription: 'Reform-CFT-VH-Dev'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: '$(resourceGroupName)'
+      location: 'UK West'
+
+      csmFile: 'infrastructure/azuredeploy.json'
+
+      csmParametersFile: 'infrastructure/azuredeploy.parameters.json'
+      overrideParameters: -appServicePlanName $(AppServicePlanName) -AzureWebsite $(WebSiteName) -customHostname $(CustomHostname) -certificateThumbprint $(WildcardCertificateThumbprint)
+
+      deploymentMode: Validation
 
 
 
