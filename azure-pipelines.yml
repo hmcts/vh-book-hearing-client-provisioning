@@ -8,7 +8,7 @@ variables:
   - group: 'vh-vsts-automation'  # another variable group
   - group: 'Azure AD Tenant - hearings.reform.hmcts.net'
   - name: service # name of a variable
-    value: vh-app-api-jb # value of the variable
+    value: vh-app-api-jb-2 # value of the variable
   - name: keyVaultName # name of a variable
     value: 'vh-jb-test' # value of the variable
 
