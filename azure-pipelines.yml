@@ -44,6 +44,8 @@ jobs:
 
   - powershell: |
      git clone https://github.com/hmcts/vh-ps-modules.git
+     cd .\vh-ps-modules\
+     git checkout replay-url-update
   
     displayName: 'Get PowerShel module source'
 
@@ -84,12 +86,12 @@ jobs:
     displayName: 'Register AAD App'
 
   - powershell: | 
-     Set-AzureADApplicationReplyUrls `
-     -AzureTenantId "$(vh_teantid)" `
-     -AzureAdAppId "$(vh_vsts_automation_dev_AppId)" `
-     -AzureAdAppCertificateThumbprint "$(vh_vsts_automation_dev_CertThumbprit)" `
-     -AADAppName "$(service)-$(environmentName)" `
-     -AADAppReplyUrls "$(AADAppReplyUrls)"
+      Set-AzureADApplicationReplyUrls `
+      -AzureTenantId "$(vh_teantid)" `
+      -AzureAdAppId "$(vh_vsts_automation_dev_AppId)" `
+      -AzureAdAppCertificateThumbprint "$(vh_vsts_automation_dev_CertThumbprit)" `
+      -AADAppName "$(service)-$(environmentName)" `
+      -AADAppReplyUrls "$(AADAppReplyUrls)"
     displayName: 'Set AAD App Replay URLs'
 
 
