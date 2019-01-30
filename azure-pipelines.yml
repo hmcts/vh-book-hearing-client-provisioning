@@ -13,7 +13,7 @@ variables:
     value: 'vhcoreinfrahtpreview' # key vault name to for storing AAD app's details - appId, ClientSecret, etc.
 
   - name: resourceGroupName
-    value: vh-core-infra-$(environmentName) # resource group name for where App Service plan is located
+    value: $(service)-$(environmentName) # resource group name for where the website is located
 
   - name: AppServicePlanName
     value: vh-core-infra-$(environmentName) # App Service Plan name
