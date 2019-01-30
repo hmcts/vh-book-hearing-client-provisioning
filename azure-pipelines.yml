@@ -47,7 +47,7 @@ jobs:
      cd .\vh-ps-modules\
      git checkout replay-url-update
   
-    displayName: 'Get PowerShel module source'
+    displayName: 'Get PowerShell module source'
 
 
   - powershell: | 
@@ -87,9 +87,9 @@ jobs:
 
   - powershell: | 
       Set-AzureADApplicationReplyUrls `
-      -AzureTenantId "$(vh_teantid)" `
-      -AzureAdAppId "$(vh_vsts_automation_dev_AppId)" `
-      -AzureAdAppCertificateThumbprint "$(vh_vsts_automation_dev_CertThumbprit)" `
+      -AzureTenantIdSecondary '$(vh_hearings_tenata_id)' `
+      -AzureAdAppIdSecondary '$(vh_hearings_vsts_automation_AppId)' `
+      -AzureAdAppCertificateThumbprintSecondary '$(vh_hearings_vsts_automation_CertThumbprit)' `
       -AADAppName "$(service)-$(environmentName)" `
       -AADAppReplyUrls "$(AADAppReplyUrls)"
     displayName: 'Set AAD App Replay URLs'
