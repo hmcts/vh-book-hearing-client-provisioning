@@ -1,34 +1,31 @@
 
 # Set variables once
 variables:
-  - group: 'vh-vsts-automation'  # another variable group
+  - group: 'vh-vsts-automation'  # variable group
   - group: 'Azure AD Tenant - hearings.reform.hmcts.net'
   - group: 'vh-hearings-ssl-certificates'
   - group: 'vh-hearings-reform-hmcts-net-dns-zone'
 
-  - name: service # name of a variable
-    value: vh-app-api-jb-2 # value of the variable
+  - name: service 
+    value: vh-book-hearing-client # name of the app to be registered
 
-  - name: keyVaultName # name of a variable
-    value: 'vh-jb-test' # value of the variable
+  - name: keyVaultName 
+    value: 'vhcoreinfrahtpreview' # key vault name to for storing AAD app's details - appId, ClientSecret, etc.
 
   - name: resourceGroupName
-    value: vh-jb
+    value: vh-core-infra-$(environmentName) # resource group name for where App Service plan is located
 
   - name: AppServicePlanName
-    value: vh-jb
+    value: vh-core-infra-$(environmentName) # App Service Plan name
 
   - name: WebSiteName
-    value: $(service)-$(environmentName)
+    value: $(service)-$(environmentName)  # Web Site name 
 
   - name: CustomHostname
-    value: $(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)
-
-  - name: certificateThumbprint
-    value: vh-jb
+    value: $(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName) # custom hostname used by the website
 
   - name: AADAppReplyUrls
-    value: https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/login
+    value: https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/login #CSV list of replay urls
 
 
 trigger:
@@ -60,20 +57,6 @@ jobs:
       Install-Module AzureRM.KeyVault
       Copy-Item -Path $(System.DefaultWorkingDirectory)/*vh-ps-modules/AzureADApplicationRegistration -Destination "C:\Program Files\WindowsPowerShell\Modules" -Recurse -Force
     displayName: 'Import AzureADApplicationRegistration Module'
-
-
-  - powershell: | 
-     write-host ('{0}' -f '$(vh_teantid)')
-     write-host ('{0}' -f '$(vh_vsts_automation_dev_AppId)')
-     write-host ('{0}' -f '$(vh_vsts_automation_dev_CertThumbprit)')
-     write-host ('{0}' -f '$(vh_azure_subscription_id_dev)')
-     write-host ('{0}' -f '$(service)_$(environmentName)')
-     write-host ('{0}' -f '$(keyVaultName)')
-     write-host ('{0}' -f '$(vh_hearings_tenata_id)')
-     write-host ('{0}' -f '$(vh_hearings_vsts_automation_AppId)')
-     write-host ('{0}' -f '$(vh_hearings_vsts_automation_CertThumbprit)')
-    displayName: 'Print variable values'
-
 
   - powershell: | 
      Invoke-AzureADApplicationRegistration `
@@ -144,7 +127,3 @@ jobs:
       overrideParameters: -appServicePlanName $(AppServicePlanName) -AzureWebsite $(WebSiteName) -customHostname $(CustomHostname) -certificateThumbprint $(WildcardCertificateThumbprint)
 
       deploymentMode: Incremental
-
-
-
-
