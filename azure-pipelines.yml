@@ -1,7 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 
 # Set variables once
 variables:
@@ -9,20 +5,28 @@ variables:
   - group: 'Azure AD Tenant - hearings.reform.hmcts.net'
   - group: 'vh-hearings-ssl-certificates'
   - group: 'vh-hearings-reform-hmcts-net-dns-zone'
+
   - name: service # name of a variable
     value: vh-app-api-jb-2 # value of the variable
+
   - name: keyVaultName # name of a variable
     value: 'vh-jb-test' # value of the variable
+
   - name: resourceGroupName
     value: vh-jb
+
   - name: AppServicePlanName
     value: vh-jb
+
   - name: WebSiteName
     value: $(service)-$(environmentName)
+
   - name: CustomHostname
     value: $(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)
+
   - name: certificateThumbprint
     value: vh-jb
+
   - name: AADAppReplyUrls
     value: https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/login
 
@@ -94,9 +98,12 @@ jobs:
       -AADAppReplyUrls "$(AADAppReplyUrls)"
     displayName: 'Set AAD App Replay URLs'
 
+  - powershell: 
+    displayName: 'Set DNS records for web app'
+
 
   - task: AzureResourceGroupDeployment@2
-    displayName: 'Validate ARM template'
+    displayName: 'Provision Web App'
     inputs:
       azureSubscription: 'Reform-CFT-VH-Dev'
       action: 'Create Or Update Resource Group'
