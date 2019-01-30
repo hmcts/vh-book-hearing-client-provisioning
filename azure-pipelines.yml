@@ -25,7 +25,7 @@ variables:
     value: $(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName) # custom hostname used by the website
 
   - name: AADAppReplyUrls
-    value: https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/login #CSV list of replay urls
+    value: https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName), https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/login, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/dashboard, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/logout #CSV list of replay urls
 
 
 trigger:
