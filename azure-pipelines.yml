@@ -113,6 +113,19 @@ jobs:
             Write-Host "CNAME record already exists."
         }
 
+#  - task: AzurePowerShell@3
+#    displayName: 'Set DNS records for web app'
+#    inputs:
+#      azureSubscription: 'DCD-CFT-VH-Pilot'
+#      azurePowerShellVersion: LatestVersion
+#      ScriptType: InlineScript
+#      Inline: |
+#
+#        Set-AzureRmDnsRecord -WebSiteName "$(service)-$(environmentName)" `
+#        -AzureAppServiceWebSiteDomainName "$(AzureAppServiceWebSiteDomainName)" `
+#        -AzureResourceGroupName "$(AzureResourceGroupName)" `
+#        -AzureDNSZoneName "$(AzureDNSZoneName)"
+
   - task: AzureResourceGroupDeployment@2
     displayName: 'Provision Web App'
     inputs:
