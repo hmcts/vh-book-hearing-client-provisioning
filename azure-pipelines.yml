@@ -45,4 +45,5 @@ jobs:
   parameters:
     serviceName: $(serviceName)
     aadAppReplyUrls: $(aadAppReplyUrls)
-
+    AppServicePlanName: $(AppServicePlanName)
+    resourceGroupName: $(resourceGroupName)
