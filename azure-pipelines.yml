@@ -7,6 +7,9 @@ variables:
   - name: appName 
     value: vh-book-hearing-client # name of the app to be registered and provisioned
 
+  - name: WebSiteName
+    value: $(appName)-$(environmentName) # web site name
+
   - name: aadAppReplyUrls
     value: https://$(WebSiteName)/login, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/dashboard, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/logout #CSV list of replay urls
 
