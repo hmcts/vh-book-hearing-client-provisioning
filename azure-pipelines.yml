@@ -8,7 +8,7 @@ variables:
     value: vh-book-hearing-client # name of the app to be registered and provisioned
 
   - name: aadAppReplyUrls
-    value: https://$(serviceName)/login, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/dashboard, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/logout #CSV list of replay urls
+    value: https://$(WebSiteName)/login, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/dashboard, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/logout #CSV list of replay urls
 
 
 # GitHub Repo that conatins build templates. Reference https://docs.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=vsts#using-other-repositories
