@@ -56,7 +56,8 @@ jobs:
       Install-Module AzureAD
       Install-Module AzureRM.KeyVault
       Copy-Item -Path $(System.DefaultWorkingDirectory)/*vh-ps-modules/AzureADApplicationRegistration -Destination "C:\Program Files\WindowsPowerShell\Modules" -Recurse -Force
-    displayName: 'Import AzureADApplicationRegistration Module'
+      Copy-Item -Path $(System.DefaultWorkingDirectory)/*vh-ps-modules/SetDNSRecord -Destination "C:\Program Files\WindowsPowerShell\Modules" -Recurse -Force
+    displayName: 'Import PowerShell Modules'
 
   - powershell: | 
      Invoke-AzureADApplicationRegistration `
