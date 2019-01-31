@@ -28,5 +28,5 @@ pr:
 jobs:
 - template: jobs/aadAppRegistration.yml@azureDevOpsTemplates # Template reference
   parameters:
-    serviceName: $(appName)
+    appName: $(appName)
     aadAppReplyUrls: $(aadAppReplyUrls)
