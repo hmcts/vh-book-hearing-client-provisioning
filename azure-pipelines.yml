@@ -43,5 +43,5 @@ pr:
 jobs:
 - template: jobs/aadAppRegistration.yml@azureDevOpsTemplates # Template reference
   parameters:
-    serviceName: $(sonarCloudProjectKey)
+    serviceName: $(serviceName)
 
