@@ -11,19 +11,19 @@ variables:
     value: 'vhcoreinfrahtpreview' # key vault name to for storing AAD app's details - appId, ClientSecret, etc.
 
   - name: resourceGroupName
-    value: $(service)-$(environmentName) # resource group name for where the website is located
+    value: $(serviceName)-$(environmentName) # resource group name for where the website is located
 
   - name: AppServicePlanName
     value: vh-core-infra-$(environmentName) # App Service Plan name
 
   - name: WebSiteName
-    value: $(service)-$(environmentName)  # Web Site name
+    value: $(serviceName)-$(environmentName)  # Web Site name
 
   - name: CustomHostname
     value: $(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName) # custom hostname used by the website
 
   - name: aadAppReplyUrls
-    value: https://$(serviceName)/login #CSV list of replay urls
+    value: https://$(serviceName)/login, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/dashboard, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/logout #CSV list of replay urls
 
 
 # GitHub Repo that conatins build templates. Reference https://docs.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=vsts#using-other-repositories
