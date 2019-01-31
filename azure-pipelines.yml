@@ -22,7 +22,7 @@ variables:
   - name: CustomHostname
     value: $(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName) # custom hostname used by the website
 
-  - name: AADAppReplyUrls
+  - name: aadAppReplyUrls
     value: https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName), https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/login, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/dashboard, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/logout #CSV list of replay urls
 
 
@@ -44,4 +44,5 @@ jobs:
 - template: jobs/aadAppRegistration.yml@azureDevOpsTemplates # Template reference
   parameters:
     serviceName: $(serviceName)
+    aadAppReplyUrls: $(aadAppReplyUrls)
 
