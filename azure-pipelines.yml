@@ -4,23 +4,8 @@ variables:
   - group: 'vh-hearings-ssl-certificates'
   - group: 'vh-hearings-reform-hmcts-net-dns-zone'
 
-  - name: serviceName 
-    value: vh-book-hearing-client # name of the app to be registered
-
-  - name: keyVaultName 
-    value: 'vhcoreinfrahtpreview' # key vault name to for storing AAD app's details - appId, ClientSecret, etc.
-
-  - name: resourceGroupName
-    value: $(serviceName)-$(environmentName) # resource group name for where the website is located
-
-  - name: AppServicePlanName
-    value: vh-core-infra-$(environmentName) # App Service Plan name
-
-  - name: WebSiteName
-    value: $(serviceName)-$(environmentName)  # Web Site name
-
-  - name: CustomHostname
-    value: $(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName) # custom hostname used by the website
+  - name: appName 
+    value: vh-book-hearing-client # name of the app to be registered and provisioned
 
   - name: aadAppReplyUrls
     value: https://$(serviceName)/login, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/dashboard, https://$(WebSiteName)$(AzureAppServiceWebSiteCustomDomainName)/logout #CSV list of replay urls
@@ -45,5 +30,3 @@ jobs:
   parameters:
     serviceName: $(serviceName)
     aadAppReplyUrls: $(aadAppReplyUrls)
-    AppServicePlanName: $(AppServicePlanName)
-    resourceGroupName: $(resourceGroupName)
