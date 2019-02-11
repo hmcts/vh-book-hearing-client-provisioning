@@ -4,6 +4,9 @@ variables:
   - group: 'Azure AD Tenant - hearings.reform.hmcts.net'
   - group: 'vh-hearings-ssl-certificates'
   - group: 'vh-hearings-reform-hmcts-net-dns-zone'
+  
+  - name: azureSubscription 
+    value: Reform-CFT-VH-Dev # default azure subscription name
 
   - name: appName 
     value: vh-book-hearing-client # name of the app to be registered and provisioned
