@@ -6,7 +6,7 @@ variables:
   - group: 'vh-hearings-reform-hmcts-net-dns-zone'
   
   - name: azureSubscription 
-    value: Reform-CFT-VH # default azure subscription name
+    value: Reform-CFT- # default azure subscription name
 
   - name: appName 
     value: vh-book-hearing-client # name of the app to be registered and provisioned
