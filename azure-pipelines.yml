@@ -37,4 +37,4 @@ jobs:
   parameters:
     appName: $(appName)
     aadAppReplyUrls: $(aadAppReplyUrls)
-    azureSubscription: $(azureSubscription)
+    #azureSubscription: $(azureSubscription)
