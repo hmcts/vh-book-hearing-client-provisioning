@@ -8,6 +8,38 @@
                     "resourceAccessName": "Sign in and read user profile",
                     "id": "311a71cc-e848-46a1-bdf8-97ff7156d8e6",
                     "type": "Scope"
+                },
+                {
+                    "ResourceAccessName": "Read and write directory data",
+                    "Id": "78c8a3c8-a07e-4b9e-af1b-b5ccab50a175",
+                    "Type": "§"
+                }
+            ]
+        },
+        {
+            "ResourceAppName": "Microsoft Graph",
+            "ResourceAppId": "00000003-0000-0000-c000-000000000000",
+            "ResourceAccess": [
+                {
+                    "ResourceAccessName": null,
+                    "Id": "62a82d76-70ea-41e2-9197-370581804d09",
+                    "Type": "Role"
+                },
+                {
+                    "ResourceAccessName": null,
+                    "Id": "df021288-bdef-4463-88db-98f22de89214",
+                    "Type": "Role"
+                }
+            ]
+        },
+        {
+            "ResourceAppName": "BookHearingApi",
+            "ResourceAppId": "9d17ccd2-ed11-4565-a578-116e111a99c2",
+            "ResourceAccess": [
+                {
+                    "ResourceAccessName": "Access BookAHearing Api",
+                    "Id": "bfcaf7b3-b605-41b1-986e-5662d88954e1",
+                    "Type": "Scope"
                 }
             ]
         }
