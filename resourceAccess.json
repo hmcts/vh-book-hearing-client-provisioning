@@ -21,12 +21,12 @@
             "resourceAppId": "00000003-0000-0000-c000-000000000000",
             "resourceAccess": [
                 {
-                    "resourceAccessName": null,
+                    "resourceAccessName": "Read all users' full profiles",
                     "id": "62a82d76-70ea-41e2-9197-370581804d09",
                     "type": "Role"
                 },
                 {
-                    "resourceAccessName": null,
+                    "resourceAccessName": "Read and write all groups",
                     "id": "df021288-bdef-4463-88db-98f22de89214",
                     "type": "Role"
                 }
