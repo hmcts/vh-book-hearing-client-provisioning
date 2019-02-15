@@ -12,7 +12,7 @@
                 {
                     "ResourceAccessName": "Read and write directory data",
                     "Id": "78c8a3c8-a07e-4b9e-af1b-b5ccab50a175",
-                    "Type": "§"
+                    "Type": "Role"
                 }
             ]
         },
