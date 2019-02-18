@@ -31,17 +31,6 @@
                     "type": "Role"
                 }
             ]
-        },
-        {
-            "resourceAppName": "BookHearingApi",
-            "resourceAppId": "9d17ccd2-ed11-4565-a578-116e111a99c2",
-            "resourceAccess": [
-                {
-                    "resourceAccessName": "Access BookAHearing Api",
-                    "id": "bfcaf7b3-b605-41b1-986e-5662d88954e1",
-                    "type": "Scope"
-                }
-            ]
         }
     ]
 }
